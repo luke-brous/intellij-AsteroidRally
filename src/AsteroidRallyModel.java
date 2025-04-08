@@ -21,14 +21,14 @@ public class AsteroidRallyModel {
 		asteroids = new Extent[10];
 		for (int i = 0; i < asteroids.length; i++) {
 			do {
-				asteroids[i] = new Extent(StdRandom.uniform(), StdRandom.uniform(), 0.05);
+				asteroids[i] = new Extent(StdRandom.uniformDouble(), StdRandom.uniformDouble(), 0.05);
 			} while (isConflictingAsteroidPosition(i));
 		}
 		// Create 5 flags that do not overlap.
 		flags = new Flag[5];
 		for (int i = 0; i < flags.length; i++) {
 			do {
-				flags[i] = new Flag(StdRandom.uniform(), StdRandom.uniform());
+				flags[i] = new Flag(StdRandom.uniformDouble(), StdRandom.uniformDouble());
 			} while (isConflictingFlagPosition(i));
 		}
 	}
