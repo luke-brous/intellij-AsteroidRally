@@ -6,16 +6,12 @@ public class Flag {
     private boolean hitByShip1;
     private boolean hitByShip2;
 
-
-
-
-
-    Extent extent = new Extent(x,y,DELTA);
-
+    private Extent extent;
 
     public Flag(double x, double y) {
         this.x = x;
         this.y = y;
+        this.extent = new Extent(x, y, 0.01);
     }
 
     public Extent getExtent() {
@@ -24,7 +20,6 @@ public class Flag {
 
     public boolean hasBeenHitByShip1() {
         return hitByShip1;
-
     }
 
     public boolean hasBeenHitByShip2() {
@@ -33,11 +28,10 @@ public class Flag {
 
     public void setHitByShip1() {
         this.hitByShip1 = true;
-
-
     }
+
     public void setHitByShip2() {
         this.hitByShip2 = true;
-
     }
 }
+

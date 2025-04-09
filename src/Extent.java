@@ -36,7 +36,8 @@ public class Extent {
     }
 
     public double distanceTo(Extent other) {
-        return Math.sqrt(Math.hypot(this.x - other.x, this.y - other.y));
+        return Math.hypot(this.x - other.x, this.y - other.y);
+
     }
 
     public void move(double dx, double dy) {

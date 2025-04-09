@@ -1,12 +1,14 @@
- Name:
+ Name: Luke
  
- Hours to complete assignment (optional):
+ Hours to complete assignment (optional): 5 hours
 
 # Work log
 
 What bugs and conceptual difficulties did you encounter?  How did you
 overcome them?  What did you learn?
 
+I had a hard time with the wrapping for the extent of each asteroid, for some reason I just couldn't figure it out. 
+I also had a little trouble with isConflictingFlagPosition method.
 
 # Issues
 

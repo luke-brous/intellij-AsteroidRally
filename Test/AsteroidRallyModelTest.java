@@ -15,6 +15,12 @@ public class AsteroidRallyModelTest {
 	}
 
 	@Test
+	public void simpleTest() {
+		assertTrue(true);
+	}
+
+
+	@Test
 	public void constructorPlacesShipsProperly() {
 		assertEquals(0.25, model.getShip1().getExtent().getX(), DELTA);
 		assertEquals(0.5, model.getShip1().getExtent().getY(), DELTA);

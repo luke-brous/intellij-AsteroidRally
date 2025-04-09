@@ -25,7 +25,7 @@ public class AsteroidRally {
 		}
 		// Show the results
 		StdDraw.show();
-		StdDraw.pause(10);
+		StdDraw.pause(20);
 	}
 
 	/** Draws a flag. */
@@ -67,23 +67,23 @@ public class AsteroidRally {
 	public void handleKeyPresses() {
 		Ship ship1 = model.getShip1();
 		if (StdDraw.isKeyPressed(java.awt.event.KeyEvent.VK_A)) {
-			ship1.rotate(0.05);
+			ship1.rotate(0.09);
 		}
 		if (StdDraw.isKeyPressed(java.awt.event.KeyEvent.VK_D)) {
-			ship1.rotate(-0.05);
+			ship1.rotate(-0.09);
 		}
 		if (StdDraw.isKeyPressed(java.awt.event.KeyEvent.VK_W)) {
-			ship1.accelerate(0.0001);
+			ship1.accelerate(0.005);
 		}
 		Ship ship2 = model.getShip2();
 		if (StdDraw.isKeyPressed(java.awt.event.KeyEvent.VK_J)) {
-			ship2.rotate(0.05);
+			ship2.rotate(0.09);
 		}
 		if (StdDraw.isKeyPressed(java.awt.event.KeyEvent.VK_L)) {
-			ship2.rotate(-0.05);
+			ship2.rotate(-0.09);
 		}
 		if (StdDraw.isKeyPressed(java.awt.event.KeyEvent.VK_I)) {
-			ship2.accelerate(0.0001);
+			ship2.accelerate(0.005);
 		}
 	}
 

@@ -1,16 +1,24 @@
 /** Logical model for the Asteroid Rally game. */
 public class AsteroidRallyModel {
 
-	/** Asteroids. */
+	/**
+	 * Asteroids.
+	 */
 	private Extent[] asteroids;
 
-	/** Flags. */
+	/**
+	 * Flags.
+	 */
 	private Flag[] flags;
 
-	/** Player 1's ship. */
+	/**
+	 * Player 1's ship.
+	 */
 	private Ship ship1;
 
-	/** Player 2's ship. */
+	/**
+	 * Player 2's ship.
+	 */
 	private Ship ship2;
 
 	public AsteroidRallyModel() {
@@ -33,7 +41,9 @@ public class AsteroidRallyModel {
 		}
 	}
 
-	/** Causes both ships to drift and checks for flag hits. */
+	/**
+	 * Causes both ships to drift and checks for flag hits.
+	 */
 	public void advance() {
 		ship1.drift();
 		ship2.drift();
@@ -47,22 +57,30 @@ public class AsteroidRallyModel {
 		}
 	}
 
-	/** Returns the asteroids. */
+	/**
+	 * Returns the asteroids.
+	 */
 	public Extent[] getAsteroids() {
 		return asteroids;
 	}
 
-	/** Returns the flags. */
+	/**
+	 * Returns the flags.
+	 */
 	public Flag[] getFlags() {
 		return flags;
 	}
 
-	/** Returns ship 1. */
+	/**
+	 * Returns ship 1.
+	 */
 	public Ship getShip1() {
 		return ship1;
 	}
 
-	/** Returns ship 2. */
+	/**
+	 * Returns ship 2.
+	 */
 	public Ship getShip2() {
 		return ship2;
 	}
@@ -91,7 +109,23 @@ public class AsteroidRallyModel {
 	 * lower-indexed flag.
 	 */
 	public boolean isConflictingFlagPosition(int i) {
-		// TODO: Implement this.
+		if (ship1.getExtent().overlaps(flags[i].getExtent()) || ship2.getExtent().overlaps(flags[i].getExtent())) {
+			return true;
+		}
+
+		for (Extent asteroid : asteroids) {
+			if (asteroid.overlaps(flags[i].getExtent())) {
+				return true;
+			}
+		}
+
+		for (int j = 0; j < i; j++) {
+			if (flags[j].getExtent().overlaps(flags[i].getExtent())) {
+				return true;
+			}
+		}
+
+
 		return false;
 	}
 
@@ -101,8 +135,43 @@ public class AsteroidRallyModel {
 	 * player hits a rock.
 	 */
 	public int winner() {
-		// TODO: Implement this.
-        return -1;
-	}
+		Extent[] aster = this.asteroids;
+		int cnt = aster.length;
 
+		int s2;
+
+		int p1Score = 0;
+
+
+		for (s2 = 0; s2 < cnt; s2++) {
+			Extent e = aster[s2];
+			if (e.overlaps(this.ship2.getExtent()))
+				return 1;
+
+
+			if (e.overlaps(this.ship1.getExtent()))
+				return 2;
+
+		}
+
+		s2 = 0;
+
+		for (cnt = 0; cnt < this.flags.length; cnt++) {
+			if (this.flags[cnt].hasBeenHitByShip1()) {
+				p1Score++;
+			}
+
+			if (this.flags[cnt].hasBeenHitByShip2()) {
+				s2++;
+			}
+		}
+
+		if (p1Score >= 5)
+			return 1;
+		else if (s2 >= 5)
+			return 2;
+		else
+			return 0;
+
+	}
 }
